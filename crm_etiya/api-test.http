@@ -1,0 +1,90 @@
+### Customer API Test File
+### Bu dosyayı IntelliJ'de aç ve yeşil play butonuna bas
+
+### AUTHENTICATION - Önce bu işlemleri yap ###
+
+### 1. Yeni kullanıcı kaydet (ADMIN yetkisiyle)
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+### 2. Login ol ve JWT token al
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@test.com",
+  "password": "123456"
+}
+
+### JWT token'ı yukarıdaki response'dan kopyala ve aşağıdaki isteklerde kullan
+### Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### CUSTOMER OPERATIONS - Token ile ###
+
+### 3. Yeni müşteri oluştur (Token gerekli)
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+{
+  "name": "Test Müşteri",
+  "email": "test@example.com", 
+  "phone": "0532-123-4567",
+  "address": "İstanbul, Türkiye",
+  "notes": "Test için oluşturulan müşteri"
+}
+
+###
+
+### 2. Tüm müşterileri listele
+GET http://localhost:8080/api/customers
+
+###
+
+### 3. Aktif müşterileri getir
+GET http://localhost:8080/api/customers/active
+
+###
+
+### 4. ID ile müşteri getir (önce bir müşteri oluştur)
+GET http://localhost:8080/api/customers/1
+
+###
+
+### 5. Müşteri arama
+GET http://localhost:8080/api/customers/search?searchTerm=Test
+
+###
+
+### 6. Müşteri güncelle (ID'yi değiştir)
+PUT http://localhost:8080/api/customers/1
+Content-Type: application/json
+
+{
+  "name": "Güncellenmiş Müşteri",
+  "email": "test@example.com",
+  "phone": "0532-999-8888", 
+  "address": "Ankara, Türkiye",
+  "notes": "Güncellenmiş notlar"
+}
+
+###
+
+### 7. Müşteri pasifleştir
+PUT http://localhost:8080/api/customers/1/deactivate
+
+###
+
+### 8. Müşteri aktifleştir
+PUT http://localhost:8080/api/customers/1/activate
+
+###

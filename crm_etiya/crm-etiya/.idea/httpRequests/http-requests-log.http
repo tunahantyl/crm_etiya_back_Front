@@ -1,0 +1,614 @@
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+<> 2025-08-11T110706.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc1NDg5OTU1NywiZXhwIjoxNzU0OTM1NTU3fQ.clg2dr8S2P3EDmZC3pPMvlYpjtUwYZU0CBrFwlrGhIc
+Content-Length: 173
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Test Müşteri",
+  "email": "test@example.com",
+  "phone": "0532-123-4567",
+  "address": "İstanbul, Türkiye",
+  "notes": "Test için oluşturulan müşteri"
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 55
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "admin@test.com",
+  "password": "123456"
+}
+
+<> 2025-08-11T110557.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+<> 2025-08-11T110537.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+GET http://localhost:8080/api/customers
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc1NDg5OTQ2MiwiZXhwIjoxNzU0OTM1NDYyfQ.crc2efERAwrNzmc90A-j31UILObdjCd9IOBaYPEPJi0
+Content-Length: 173
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Test Müşteri",
+  "email": "test@example.com",
+  "phone": "0532-123-4567",
+  "address": "İstanbul, Türkiye",
+  "notes": "Test için oluşturulan müşteri"
+}
+
+###
+
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkB0ZXN0LmNvbSIsImlhdCI6MTc1NDg5OTQxMywiZXhwIjoxNzU0OTM1NDEzfQ.GIOqirHeIbYzzAqM5cjG6deU5yWCk54gYPcmZxmRUiM
+Content-Length: 173
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Test Müşteri",
+  "email": "test@example.com",
+  "phone": "0532-123-4567",
+  "address": "İstanbul, Türkiye",
+  "notes": "Test için oluşturulan müşteri"
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 55
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "admin@test.com",
+  "password": "123456"
+}
+
+<> 2025-08-11T110422.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+<> 2025-08-11T110333.200.json
+
+###
+
+PUT http://localhost:8080/api/customers/1/activate
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+###
+
+PUT http://localhost:8080/api/customers/1
+Content-Type: application/json
+Content-Length: 168
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Güncellenmiş Müşteri",
+  "email": "test@example.com",
+  "phone": "0532-999-8888",
+  "address": "Ankara, Türkiye",
+  "notes": "Güncellenmiş notlar"
+}
+
+###
+
+GET http://localhost:8080/api/customers/active
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/api/customers
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Length: 173
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Test Müşteri",
+  "email": "test@example.com",
+  "phone": "0532-123-4567",
+  "address": "İstanbul, Türkiye",
+  "notes": "Test için oluşturulan müşteri"
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 55
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "admin@test.com",
+  "password": "123456"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 55
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "admin@test.com",
+  "password": "123456"
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 55
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "admin@test.com",
+  "password": "123456"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 102
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "fullName": "Admin User",
+  "email": "admin@test.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+###
+
+GET http://localhost:8080/api/customers/search?searchTerm=Test
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+Content-Length: 173
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Test Müşteri",
+  "email": "test@example.com",
+  "phone": "0532-123-4567",
+  "address": "İstanbul, Türkiye",
+  "notes": "Test için oluşturulan müşteri"
+}
+
+###
+
+PUT http://localhost:8080/api/customers/1/activate
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+###
+
+GET http://localhost:8080/api/customers/search?searchTerm=Test
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+PUT http://localhost:8080/api/customers/1
+Content-Type: application/json
+Content-Length: 168
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Güncellenmiş Müşteri",
+  "email": "test@example.com",
+  "phone": "0532-999-8888",
+  "address": "Ankara, Türkiye",
+  "notes": "Güncellenmiş notlar"
+}
+
+###
+
+GET http://localhost:8080/api/customers/search?searchTerm=Test
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+PUT http://localhost:8080/api/customers/1
+Content-Type: application/json
+Content-Length: 168
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.4.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Güncellenmiş Müşteri",
+  "email": "test@example.com",
+  "phone": "0532-999-8888",
+  "address": "Ankara, Türkiye",
+  "notes": "Güncellenmiş notlar"
+}
+
+###
+
