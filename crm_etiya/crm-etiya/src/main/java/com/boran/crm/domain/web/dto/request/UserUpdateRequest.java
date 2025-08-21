@@ -1,4 +1,4 @@
-package com.boran.crm.domain.web;
+package com.boran.crm.domain.web.dto.request;
 
 import lombok.Data;
 

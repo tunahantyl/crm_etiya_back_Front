@@ -2,7 +2,7 @@ package com.boran.crm.domain.application;
 
 import com.boran.crm.domain.entity.Task;
 import com.boran.crm.domain.entity.TaskStatus;
-import com.boran.crm.domain.web.TaskCreateRequest;
+import com.boran.crm.domain.web.dto.request.TaskCreateRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

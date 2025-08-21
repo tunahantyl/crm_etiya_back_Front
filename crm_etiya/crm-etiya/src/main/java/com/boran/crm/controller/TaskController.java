@@ -3,9 +3,9 @@ package com.boran.crm.controller;
 import com.boran.crm.domain.application.TaskService;
 import com.boran.crm.domain.entity.Task;
 import com.boran.crm.domain.entity.TaskStatus;
-import com.boran.crm.domain.web.TaskCreateRequest;
-import com.boran.crm.domain.web.TaskResponse;
-import com.boran.crm.domain.web.TaskListResponse;
+import com.boran.crm.domain.web.dto.request.TaskCreateRequest;
+import com.boran.crm.domain.web.dto.response.TaskResponse;
+import com.boran.crm.domain.web.dto.response.TaskListResponse;
 import com.boran.crm.domain.mapper.TaskMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,12 +21,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/tasks")
 @RequiredArgsConstructor
+@CrossOrigin
 public class TaskController {
 
     private final TaskService taskService;
     private final TaskMapper taskMapper;
 
-    // Temel CRUD endpoint'leri
+
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER', 'USER')")
     public ResponseEntity<TaskResponse> createTask(@RequestBody TaskCreateRequest request) {
@@ -64,7 +65,7 @@ public class TaskController {
         return ResponseEntity.ok(response);
     }
 
-    // Task atama ve durum güncelleme
+
     @PostMapping("/{taskId}/assign/{userId}")
     @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     public ResponseEntity<Task> assignTask(
@@ -82,7 +83,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.updateTaskStatus(taskId, status));
     }
 
-    // Filtreleme endpoint'leri
+
     @GetMapping("/customer/{customerId}")
     public ResponseEntity<List<Task>> getTasksByCustomer(@PathVariable Long customerId) {
         return ResponseEntity.ok(taskService.findTasksByCustomerId(customerId));
@@ -111,7 +112,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.findTasksByDueDateBetween(start, end));
     }
 
-    // Dashboard ve raporlama endpoint'leri
+
     @GetMapping("/count/{status}")
     public ResponseEntity<Long> getTaskCountByStatus(@PathVariable TaskStatus status) {
         return ResponseEntity.ok(taskService.countTasksByStatus(status));

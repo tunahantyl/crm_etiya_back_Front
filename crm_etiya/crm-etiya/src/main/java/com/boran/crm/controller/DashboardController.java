@@ -16,6 +16,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/dashboard")
 @RequiredArgsConstructor
+@CrossOrigin
 public class DashboardController {
 
     private final CustomerService customerService;

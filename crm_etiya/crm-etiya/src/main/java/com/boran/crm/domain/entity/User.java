@@ -21,23 +21,23 @@ import java.util.List;
 @Builder
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User extends BaseEntity implements UserDetails {
-    
+
     @Column(nullable = false)
     private String fullName;
-    
+
     @Column(nullable = false, unique = true)
     private String email;
-    
+
     @Column(nullable = false)
     @JsonIgnore
     private String password;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role = Role.USER;
-    
+
     private boolean isActive = true;
-    
+
     @OneToMany(mappedBy = "assignedTo", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Task> assignedTasks = new ArrayList<>();

@@ -7,7 +7,7 @@ import com.boran.crm.domain.entity.Customer;
 import com.boran.crm.domain.repository.TaskRepository;
 import com.boran.crm.domain.repository.UserRepository;
 import com.boran.crm.domain.repository.CustomerRepository;
-import com.boran.crm.domain.web.TaskCreateRequest;
+import com.boran.crm.domain.web.dto.request.TaskCreateRequest;
 import com.boran.crm.domain.mapper.TaskMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,13 +20,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
-    
+
     private final TaskRepository taskRepository;
     private final UserRepository userRepository;
     private final CustomerRepository customerRepository;
@@ -34,32 +33,30 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task createTask(Task task) {
-        // Yeni task'ın başlangıç durumunu ayarla
         if (task.getStatus() == null) {
             task.setStatus(TaskStatus.PENDING);
         }
-        
-        // Oluşturulma tarihini set et
+
         task.setCreatedAt(LocalDateTime.now());
-        
+
         return taskRepository.save(task);
     }
 
     @Override
     public Task createTask(TaskCreateRequest request) {
-        // MapStruct ile otomatik mapping ve eksik alanları set et
+
         Task task = taskMapper.taskCreateRequestToTask(request);
         task.setStatus(TaskStatus.PENDING);
         task.setCreatedAt(LocalDateTime.now());
 
-        // Customer entity resolve
+
         if (request.getCustomerId() != null) {
             Customer customer = customerRepository.findById(request.getCustomerId())
                     .orElseThrow(() -> new RuntimeException("Customer not found with id: " + request.getCustomerId()));
             task.setCustomer(customer);
         }
 
-        // Assigned user resolve
+
         if (request.getAssignedUserId() != null) {
             User assignedUser = userRepository.findById(request.getAssignedUserId())
                     .orElseThrow(() -> new RuntimeException("User not found with id: " + request.getAssignedUserId()));
@@ -73,7 +70,7 @@ public class TaskServiceImpl implements TaskService {
     public Task updateTask(Long id, Task updatedTask) {
         return taskRepository.findById(id)
                 .map(task -> {
-                    // Güncellenebilir alanları kontrol et ve güncelle
+
                     if (updatedTask.getTitle() != null) {
                         task.setTitle(updatedTask.getTitle());
                     }
@@ -89,7 +86,7 @@ public class TaskServiceImpl implements TaskService {
                     if (updatedTask.getStatus() != null) {
                         task.setStatus(updatedTask.getStatus());
                     }
-                    
+
                     return taskRepository.save(task);
                 })
                 .orElseThrow(() -> new RuntimeException("Task not found with id: " + id));
@@ -114,17 +111,17 @@ public class TaskServiceImpl implements TaskService {
     public Task assignTask(Long taskId, Long userId) {
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new RuntimeException("Task not found"));
-                
+
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        
+
         task.setAssignedTo(user);
-        
+
         // Eğer task PENDING durumundaysa IN_PROGRESS'e çek
         if (task.getStatus() == TaskStatus.PENDING) {
             task.setStatus(TaskStatus.IN_PROGRESS);
         }
-        
+
         return taskRepository.save(task);
     }
 
@@ -133,12 +130,12 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findById(taskId)
                 .map(task -> {
                     task.setStatus(status);
-                    
+
                     // Eğer task tamamlandıysa, tamamlanma tarihini set et
                     if (status == TaskStatus.COMPLETED) {
                         task.setCompletedAt(LocalDateTime.now());
                     }
-                    
+
                     return taskRepository.save(task);
                 })
                 .orElseThrow(() -> new RuntimeException("Task not found"));
@@ -221,12 +218,12 @@ public class TaskServiceImpl implements TaskService {
         List<String> labels = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM yyyy");
         LocalDateTime now = LocalDateTime.now();
-        
+
         for (int i = 5; i >= 0; i--) {
             LocalDateTime month = now.minusMonths(i);
             labels.add(month.format(formatter));
         }
-        
+
         return labels;
     }
 
@@ -234,15 +231,15 @@ public class TaskServiceImpl implements TaskService {
     public List<Long> getCompletedTasksPerMonth() {
         List<Long> counts = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-        
+
         for (int i = 5; i >= 0; i--) {
             LocalDateTime startOfMonth = now.minusMonths(i).withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0);
             LocalDateTime endOfMonth = startOfMonth.plusMonths(1).minusSeconds(1);
-            
+
             long count = taskRepository.countByStatusAndCompletedAtBetween(TaskStatus.COMPLETED, startOfMonth, endOfMonth);
             counts.add(count);
         }
-        
+
         return counts;
     }
 
@@ -250,15 +247,15 @@ public class TaskServiceImpl implements TaskService {
     public List<Long> getCreatedTasksPerMonth() {
         List<Long> counts = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-        
+
         for (int i = 5; i >= 0; i--) {
             LocalDateTime startOfMonth = now.minusMonths(i).withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0);
             LocalDateTime endOfMonth = startOfMonth.plusMonths(1).minusSeconds(1);
-            
+
             long count = taskRepository.countByCreatedAtBetween(startOfMonth, endOfMonth);
             counts.add(count);
         }
-        
+
         return counts;
     }
 }

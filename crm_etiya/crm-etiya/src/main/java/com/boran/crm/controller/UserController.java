@@ -2,11 +2,11 @@ package com.boran.crm.controller;
 
 import com.boran.crm.domain.application.UserService;
 import com.boran.crm.domain.entity.User;
-import com.boran.crm.domain.web.AuthResponse;
-import com.boran.crm.domain.web.LoginRequest;
-import com.boran.crm.domain.web.RegisterRequest;
-import com.boran.crm.domain.web.UserResponse;
-import com.boran.crm.domain.web.UserUpdateRequest;
+import com.boran.crm.domain.web.dto.response.AuthResponse;
+import com.boran.crm.domain.web.dto.request.LoginRequest;
+import com.boran.crm.domain.web.dto.request.RegisterRequest;
+import com.boran.crm.domain.web.dto.response.UserResponse;
+import com.boran.crm.domain.web.dto.request.UserUpdateRequest;
 import com.boran.crm.domain.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +18,7 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
+@CrossOrigin
 public class UserController {
 
     private final UserService userService;
