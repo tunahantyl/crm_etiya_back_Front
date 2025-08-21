@@ -1,6 +1,6 @@
 import api from './axios';
 
-export type TaskStatus = 'PENDING' | 'IN_PROGRESS' | 'COMPLETED';
+export type TaskStatus = 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
 
 export interface Task {
   id: number;

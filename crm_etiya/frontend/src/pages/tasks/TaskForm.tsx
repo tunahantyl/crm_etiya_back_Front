@@ -47,7 +47,7 @@ const validationSchema = yup.object({
     .required('Bitiş tarihi zorunludur'),
   status: yup
     .string()
-    .oneOf(['PENDING', 'IN_PROGRESS', 'COMPLETED'], 'Geçersiz durum')
+    .oneOf(['PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED'], 'Geçersiz durum')
     .required('Durum seçimi zorunludur'),
 });
 
@@ -234,6 +234,7 @@ const TaskForm = () => {
                   <MenuItem value="PENDING">Beklemede</MenuItem>
                   <MenuItem value="IN_PROGRESS">Devam Ediyor</MenuItem>
                   <MenuItem value="COMPLETED">Tamamlandı</MenuItem>
+                  <MenuItem value="CANCELLED">İptal Edildi</MenuItem>
                 </Select>
               </FormControl>
 
