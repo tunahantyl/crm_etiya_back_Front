@@ -84,7 +84,7 @@ const Sidebar = () => {
             color: 'white',
             fontWeight: 700,
             textAlign: 'center',
-            textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
           }}
         >
           CRM System
@@ -140,7 +140,11 @@ const Sidebar = () => {
                 primaryTypographyProps={{
                   fontSize: '0.95rem',
                   fontWeight: 500,
-                  textShadow: '0 1px 2px rgba(0,0,0,0.3)',
+                }}
+                sx={{
+                  '& .MuiListItemText-primary': {
+                    filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))',
+                  }
                 }}
               />
             </ListItemButton>

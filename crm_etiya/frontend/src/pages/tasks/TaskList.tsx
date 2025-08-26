@@ -19,16 +19,46 @@ import { pageContainerStyles, pageHeaderStyles, tableContainerStyles } from '../
 
 const formatDate = (value: unknown) => {
   if (!value) return '-';
-  const raw = typeof value === 'string' ? value : String(value);
-  // Normalize common backend formats
-  const normalized = raw.includes('T') ? raw : raw.replace(' ', 'T');
-  const date = new Date(normalized);
-  if (Number.isNaN(date.getTime())) {
-    // Fallback: show YYYY-MM-DD part if parse fails
-    const onlyDate = raw.split('T')[0] || raw;
-    return onlyDate;
+  // Support object form from some serializers: { year, month, day, hour, minute, second, nano }
+  if (typeof value === 'object' && value !== null) {
+    const v: any = value;
+    if (typeof v.year === 'number' && typeof v.month === 'number' && typeof v.day === 'number') {
+      const date = new Date(
+        v.year,
+        (v.month - 1) || 0,
+        v.day || 1,
+        v.hour || 0,
+        v.minute || 0,
+        v.second || 0,
+        v.nano ? Math.floor(v.nano / 1_000_000) : 0
+      );
+      if (!Number.isNaN(date.getTime())) return date.toLocaleDateString('tr-TR');
+    }
   }
-  return date.toLocaleDateString('tr-TR');
+  const raw = typeof value === 'string' ? value : String(value);
+  // If browser can parse (includes timezone like Z or +03:00)
+  const isoLike = raw.includes('T') || raw.includes('+') || raw.endsWith('Z');
+  if (isoLike) {
+    const d = new Date(raw.includes('T') ? raw : raw.replace(' ', 'T'));
+    if (!Number.isNaN(d.getTime())) return d.toLocaleDateString('tr-TR');
+  }
+  // Robust manual parse: YYYY-MM-DD HH:mm:ss(.SSS... up to 6)
+  const m = raw.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,6}))?$/);
+  if (m) {
+    const [_, y, mo, d, h, mi, s, ms] = m;
+    const date = new Date(
+      Number(y),
+      Number(mo) - 1,
+      Number(d),
+      Number(h),
+      Number(mi),
+      Number(s),
+      ms ? Number(ms.slice(0, 3).padEnd(3, '0')) : 0
+    );
+    if (!Number.isNaN(date.getTime())) return date.toLocaleDateString('tr-TR');
+  }
+  // Fallback: show date part
+  return raw.split(' ')[0] || raw.split('T')[0] || raw;
 };
 
 const getStatusColor = (status: string) => {
@@ -144,7 +174,9 @@ const TaskList = () => {
       headerName: 'Bitiş Tarihi',
       flex: 1,
       minWidth: 150,
-      valueFormatter: (params) => formatDate(params.value),
+      renderCell: (params) => (
+        <span>{formatDate((params as any).value)}</span>
+      ),
     },
     {
       field: 'actions',
@@ -202,15 +234,22 @@ const TaskList = () => {
           <DataGrid
             rows={tasks}
             columns={columns}
+            density="compact"
             initialState={{
               pagination: {
-                paginationModel: { page: 0, pageSize: 10 },
+                paginationModel: { page: 0, pageSize: 50 },
               },
               sorting: {
                 sortModel: [{ field: 'dueDate', sort: 'asc' }],
               },
             }}
-            pageSizeOptions={[10, 25, 50]}
+            pageSizeOptions={[10, 25, 50, 100]}
+            slots={{
+              toolbar: undefined,
+            }}
+            slotProps={{
+              toolbar: { showQuickFilter: true, quickFilterProps: { debounceMs: 300 } },
+            }}
             checkboxSelection
             disableRowSelectionOnClick
             onRowSelectionModelChange={undefined}

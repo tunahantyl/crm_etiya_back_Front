@@ -1,6 +1,6 @@
 package com.boran.crm.domain.web.dto.response;
 
-import com.boran.crm.domain.entity.TaskStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import java.time.LocalDateTime;
 
@@ -9,14 +9,22 @@ public class TaskResponse {
     private Long id;
     private String title;
     private String description;
-    private TaskStatus status;
+    private String status;
     private Integer priority;
     private Float estimatedHours;
-    private LocalDateTime dueDate;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private LocalDateTime completedAt;
     
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    private LocalDateTime dueDate;
+    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    private LocalDateTime createdAt;
+    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    private LocalDateTime updatedAt;
+    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    private LocalDateTime completedAt;
+
     // İlişkili entity bilgileri
     private Long customerId;
     private String customerName;

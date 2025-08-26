@@ -111,6 +111,18 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           border: 'none',
+        },
+        columnHeaders: {
+          backgroundColor: '#f8fafc',
+          borderBottom: 'none',
+        },
+        row: {
+          '&:nth-of-type(odd)': {
+            backgroundColor: '#fcfdff',
+          },
+          '&:hover': {
+            backgroundColor: '#f6faff',
+          }
         }
       }
     }

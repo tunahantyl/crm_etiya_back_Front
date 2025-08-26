@@ -144,7 +144,7 @@ export const taskService = {
   getAll: async (): Promise<Task[]> => {
     try {
       // Accept both Page<BackendTask> and List<BackendTaskListItem>
-      const response = await api.get('/tasks', { params: { page: 0, size: 100 } });
+      const response = await api.get('/tasks', { params: { page: 0, size: 500, sort: 'createdAt,desc' } });
       const data: any = response.data;
 
       if (Array.isArray(data)) {

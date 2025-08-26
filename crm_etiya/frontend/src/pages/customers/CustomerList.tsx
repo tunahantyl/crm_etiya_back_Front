@@ -1,3 +1,34 @@
+const formatDate = (value: unknown) => {
+  if (!value) return '-';
+  if (typeof value === 'object' && value !== null) {
+    const v: any = value;
+    if (typeof v.year === 'number' && typeof v.month === 'number' && typeof v.day === 'number') {
+      const date = new Date(
+        v.year,
+        (v.month - 1) || 0,
+        v.day || 1,
+        v.hour || 0,
+        v.minute || 0,
+        v.second || 0,
+        v.nano ? Math.floor(v.nano / 1_000_000) : 0
+      );
+      if (!Number.isNaN(date.getTime())) return date.toLocaleDateString('tr-TR');
+    }
+  }
+  const raw = typeof value === 'string' ? value : String(value);
+  const isoLike = raw.includes('T') || raw.includes('+') || raw.endsWith('Z');
+  if (isoLike) {
+    const d = new Date(raw.includes('T') ? raw : raw.replace(' ', 'T'));
+    if (!Number.isNaN(d.getTime())) return d.toLocaleDateString('tr-TR');
+  }
+  const m = raw.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,6}))?$/);
+  if (m) {
+    const [_, y, mo, d, h, mi, s, ms] = m;
+    const date = new Date(Number(y), Number(mo) - 1, Number(d), Number(h), Number(mi), Number(s), ms ? Number(ms.slice(0,3).padEnd(3, '0')) : 0);
+    if (!Number.isNaN(date.getTime())) return date.toLocaleDateString('tr-TR');
+  }
+  return raw.split(' ')[0] || raw.split('T')[0] || raw;
+};
 import { useEffect } from 'react';
 import {
   Box,
@@ -66,12 +97,9 @@ const CustomerList = () => {
       headerName: 'Kayıt Tarihi',
       flex: 1,
       minWidth: 150,
-      valueFormatter: (params) => {
-        const value = (params as any).value as string | number | Date | undefined;
-        if (!value) return '-';
-        const date = new Date(value);
-        return Number.isNaN(date.getTime()) ? '-' : date.toLocaleDateString('tr-TR');
-      },
+      renderCell: (params) => (
+        <span>{formatDate((params as any).value)}</span>
+      ),
     },
     {
       field: 'isActive',
